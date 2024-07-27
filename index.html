@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Lucro</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', sans-serif;
+            background-color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #ffcc00;
+            font-family: 'Georgia', serif;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left;
+            color: #ffcc00;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #000;
+            position: relative;
+            z-index: 2;
+        }
+
+        button {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'Georgia', serif;
+            position: relative;
+            z-index: 2;
+        }
+
+        button:hover {
+            background-color: #cc5200;
+        }
+
+        p#resultado {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ffcc00;
+            position: relative;
+            z-index: 2;
+        }
+
+        .background-image {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 200px;
+            height: auto;
+            opacity: 0.8;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="./assets/sniper.png" alt="Arqueiro com lobo" class="background-image">
+        <h1>Calculadora de Lucro para Elunium Perfeito</h1>
+        <label for="moedasPorEspada">Digite quantas moedas o item vale:</label>
+        <input type="number" id="moedasPorEspada" name="moedasPorEspada" required>
+        <br>
+        <label for="valorEspadaDinheiro">Digite o valor da espada em zeny:</label>
+        <input type="number" id="valorEspadaDinheiro" name="valorEspadaDinheiro" required>
+        <br>
+        <button onclick="calcularLucro()">Calcular</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function calcularLucro() {
+            const moedasPorEspada = parseFloat(document.getElementById('moedasPorEspada').value);
+            const valorEspadaDinheiro = parseFloat(document.getElementById('valorEspadaDinheiro').value);
+            if (isNaN(moedasPorEspada) || moedasPorEspada <= 0 || isNaN(valorEspadaDinheiro) || valorEspadaDinheiro <= 0) {
+                document.getElementById('resultado').textContent = "Por favor, insira valores válidos.";
+                return;
+            }
+
+            const custoEluEnriquecido = (400 / moedasPorEspada) * valorEspadaDinheiro;
+            const custoEluniumPerfeito = custoEluEnriquecido + 3080000;
+            const valorVendaEluniumPerfeito = 5500000;
+            const lucro = valorVendaEluniumPerfeito - custoEluniumPerfeito;
+
+            const resultadoElement = document.getElementById('resultado');
+            resultadoElement.textContent = `O custo total para criar o Elunium Perfeito é ${custoEluniumPerfeito.toLocaleString()} moedas.`;
+            if (lucro > 0) {
+                resultadoElement.textContent += ` Você terá um lucro de ${lucro.toLocaleString()} moedas.`;
+            } else if (lucro < 0) {
+                resultadoElement.textContent += ` Você terá um prejuízo de ${Math.abs(lucro).toLocaleString()} moedas.`;
+            } else {
+                resultadoElement.textContent += " Você não terá lucro nem prejuízo.";
+            }
+        }
+    </script>
+</body>
+
+</html>
