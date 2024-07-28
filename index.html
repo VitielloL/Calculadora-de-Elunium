@@ -113,11 +113,11 @@
     <div class="container">
         <img src="./assets/sniper.png" alt="Arqueiro com lobo" class="background-image">
         <h1>Calculadora de Lucro para Elunium Perfeito</h1>
-        <label for="moedasPorEspada">Digite quantas moedas o item vale:</label>
-        <input type="number" id="moedasPorEspada" name="moedasPorEspada" required>
+        <label for="moedasPorItem">Digite quantas moedas o item vale:</label>
+        <input type="number" id="moedasPorItem" name="moedasPorItem" required>
         <br>
-        <label for="valorEspadaDinheiro">Digite o valor do item em zeny:</label>
-        <input type="number" id="valorEspadaDinheiro" name="valorEspadaDinheiro" required>
+        <label for="valorItemDinheiro">Digite o valor do item em zeny:</label>
+        <input type="number" id="valorItemDinheiro" name="valorItemDinheiro" required>
         <br>
         <button onclick="calcularLucro()">Calcular</button>
         <p id="resultado"></p>
@@ -129,16 +129,16 @@
 
     <script>
         function calcularLucro() {
-            const moedasPorEspada = parseFloat(document.getElementById('moedasPorEspada').value);
-            const valorEspadaDinheiro = parseFloat(document.getElementById('valorEspadaDinheiro').value);
-            if (isNaN(moedasPorEspada) || moedasPorEspada <= 0 || isNaN(valorEspadaDinheiro) || valorEspadaDinheiro <= 0) {
+            const moedasPorItem = parseFloat(document.getElementById('moedasPorItem').value);
+            const valorItemDinheiro = parseFloat(document.getElementById('valorItemDinheiro').value);
+            if (isNaN(moedasPorItem) || moedasPorItem <= 0 || isNaN(valorItemDinheiro) || valorItemDinheiro <= 0) {
                 document.getElementById('resultado').textContent = "Por favor, insira valores válidos.";
                 return;
             }
 
-            const custoEluEnriquecido = (400 / moedasPorEspada) * valorEspadaDinheiro;
+            const custoEluEnriquecido = (400 / moedasPorItem) * valorItemDinheiro;
             const custoEluniumPerfeito = custoEluEnriquecido + 3080000;
-            const valorVendaEluniumPerfeito = 5500000;
+            const valorVendaEluniumPerfeito = 5400000;
             const lucro = valorVendaEluniumPerfeito - custoEluniumPerfeito;
 
             const resultadoElement = document.getElementById('resultado');
