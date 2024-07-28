@@ -138,20 +138,19 @@
 
             const custoEluEnriquecido = (400 / moedasPorItem) * valorItemDinheiro;
             const custoEluniumPerfeito = custoEluEnriquecido + 3080000;
-            const valorVendaEluniumPerfeito = 5600000 - (5500000 * 5/100);
+            const valorVendaEluniumPerfeito = 5600000 - (5600000 * 5 / 100);
             const lucro = valorVendaEluniumPerfeito - custoEluniumPerfeito;
 
             const resultadoElement = document.getElementById('resultado');
-            resultadoElement.textContent = `O custo total para criar o Elunium Perfeito é ${custoEluniumPerfeito.toLocaleString()} moedas.`;
+            resultadoElement.innerHTML = `O custo total para criar o Elunium Perfeito é ${custoEluniumPerfeito.toLocaleString()} moedas.`;
             if (lucro > 0) {
-                resultadoElement.textContent += ` Você terá um lucro de ${lucro.toLocaleString()} moedas.`;
+                resultadoElement.innerHTML += ` Você terá um <span style="color: green">lucro</span> de ${lucro.toLocaleString()} moedas.`;
             } else if (lucro < 0) {
-                resultadoElement.textContent += ` Você terá um prejuízo de ${Math.abs(lucro).toLocaleString()} moedas.`;
+                resultadoElement.innerHTML += ` Você terá um <span style="color: red">prejuízo</span> de ${Math.abs(lucro).toLocaleString()} moedas.`;
             } else {
-                resultadoElement.textContent += " Você não terá lucro nem prejuízo.";
+                resultadoElement.innerHTML += " Você não terá lucro nem prejuízo.";
             }
         }
     </script>
 </body>
-
 </html>
